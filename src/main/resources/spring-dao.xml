@@ -20,7 +20,7 @@
     </bean>
     
     
-    <context:property-placeholder location="classpath:application.properties"/>  
+    <context:property-placeholder location="classpath:mail.properties"  ignore-unresolvable="true"/>  
       
      <bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">    
         <property name="from" value ="${mail.from}"></property>    
