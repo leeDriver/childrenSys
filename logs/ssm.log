@@ -1,0 +1,6 @@
+[INFO] [2017-10-21 22:06:56][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3830f1c0: startup date [Sat Oct 21 22:06:56 CST 2017]; root of context hierarchy
+[INFO] [2017-10-21 22:06:56][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mail.xml]
+[INFO] [2017-10-21 22:10:42][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3830f1c0: startup date [Sat Oct 21 22:10:42 CST 2017]; root of context hierarchy
+[INFO] [2017-10-21 22:10:42][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mail.xml]
+[INFO] [2017-10-21 22:12:56][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3830f1c0: startup date [Sat Oct 21 22:12:56 CST 2017]; root of context hierarchy
+[INFO] [2017-10-21 22:12:56][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mail.xml]
