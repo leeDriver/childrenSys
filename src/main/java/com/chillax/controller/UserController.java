@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;  
   
 import com.chillax.dto.User;
-import com.chillax.service.ISendMailService;
 import com.chillax.service.IUserService;  
   
 @Controller  
@@ -18,15 +17,12 @@ import com.chillax.service.IUserService;
 public class UserController {  
     @Resource  
     private IUserService userService;  
-      
-    @Resource  
-    private ISendMailService sendMailService;  
+       
     
     @RequestMapping("/userList")  
     public String userList(HttpServletRequest request,Model model){  
         List<User> uList = userService.getAllUser();  
         model.addAttribute("uList", uList);  
-        sendMailService.sendHtmlMail("liwei", "content", "1030496998@qq.com");
         return "userList";  
     }  
       

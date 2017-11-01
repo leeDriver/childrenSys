@@ -20,7 +20,7 @@
     </bean>
     
     
-    <context:property-placeholder location="classpath:mail.properties"  ignore-unresolvable="true"/>  
+    <!-- <context:property-placeholder location="classpath:mail.properties"  ignore-unresolvable="true"/>  
       
      <bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">    
         <property name="from" value ="${mail.from}"></property>    
@@ -34,17 +34,17 @@
         <property name="password" value="${mail.password}" />    
         <property name="javaMailProperties">    
             <props>    
-                <!-- 设置认证开关 -->    
+                设置认证开关    
                 <prop key="mail.smtp.auth">true</prop>    
-                <!-- 启动调试开关 -->    
+                启动调试开关    
                 <prop key="mail.debug">true</prop>    
-                <!-- 设置发送延时 -->  
+                设置发送延时  
                 <prop key="mail.smtp.timeout">0</prop>  
                 <prop key="mail.smtp.socketFactory.class">${mail.smtp.socketFactory.class}</prop>  
                 <prop key="mail.smtp.port">${mail.smtp.port}</prop>  
                 <prop key="mail.smtp.socketFactory.port">${mail.smtp.socketFactory.port}</prop>  
             </props>    
         </property>    
-    </bean> 
+    </bean>  -->
     
 </beans>
