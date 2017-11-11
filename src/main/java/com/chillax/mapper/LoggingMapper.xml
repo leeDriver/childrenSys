@@ -1,0 +1,59 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.chillax.dao.ILogginDao" >    
+    <resultMap id="BaseResultLoggingMap" type="com.chillax.dto.Logging">  
+        <result column="l_id" property="l_id" jdbcType="INTEGER" />  
+        <result column="l_name" property="l_name" jdbcType="VARCHAR" />  
+        <result column="l_class" property="l_class" jdbcType="VARCHAR" />  
+        <result column="l_user_id" property="l_user_id" jdbcType="INTEGER" />   
+        <result column="create_time" property="create_time" jdbcType="DATE" />  
+        <result column="update_time" property="update_time" jdbcType="DATE" />  
+    </resultMap>  
+ 
+	
+    <sql id="Base_Column_List">  
+        l_id, l_name, l_class, l_user_id ,create_time,update_time
+    </sql>  
+  
+   <!-- 插入用户 注册-->  
+    <insert id="insertLoggin" parameterType="com.chillax.dto.Logging">  
+        insert into  log_table    
+        <trim prefix="(" suffix=")" suffixOverrides="," >    
+          <if test="l_id != null" >    
+            l_id,    
+          </if>    
+          <if test="l_name != null" >    
+            l_name,    
+          </if>    
+          <if test="l_class != null" >    
+            l_class,    
+          </if>
+          	<if test="l_user_id != null">
+          	l_user_id
+          	</if>
+          	<if test="create_time != null">create_time</if>
+          	<if test="update_time != null">update_time</if>    
+        </trim>    
+        <trim prefix="values (" suffix=")" suffixOverrides="," >    
+          <if test="l_id != null" >    
+            #{l_id,jdbcType=INTEGER},    
+          </if>    
+          <if test="l_name != null" >    
+            #{l_name,jdbcType=VARCHAR},    
+          </if>    
+          <if test="l_class != null" >    
+            #{l_class,jdbcType=VARCHAR},    
+          </if>    
+          <if test="l_user_id != null">#{l_user_id,jdbcType=INTEGER },</if>
+          <if test="create_time !=null">#{create_time ,jdbcType=DATE},</if>
+          <if test="update_time !=null">#{update_time,jdbcType=DATE},</if>
+        </trim>     
+    </insert>  
+     
+  <!-- 查询用户-->  
+    <select id="getAllLogging" resultMap="BaseResultLoggingMap">  
+        select  
+        <include refid="Base_Column_List" />  
+        from log_table  
+    </select>
+    
+</mapper>  

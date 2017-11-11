@@ -1,0 +1,120 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.chillax.dao.IUserCommonDao" >    
+    <resultMap id="BaseResultMap" type="com.chillax.dto.UserCommon">  
+        <result column="u_id" property="u_id" jdbcType="INTEGER" />  
+        <result column="accout_num" property="accout_num" jdbcType="VARCHAR" />  
+        <result column="password" property="password" jdbcType="VARCHAR" />  
+        <result column="nick" property="nick" jdbcType="VARCHAR" />  
+        <result column="gender" property="gender" jdbcType="VARCHAR" />  
+        <result column="birthday" property="birthday" jdbcType="VARCHAR" />  
+        <result column="likes" property="likes" jdbcType="VARCHAR" />  
+        <result column="school" property="school" jdbcType="VARCHAR" />  
+        <result column="account_city" property="account_city" jdbcType="VARCHAR" />  
+        <result column="introduction" property="introduction" jdbcType="VARCHAR" />  
+        <result column="number" property="number" jdbcType="VARCHAR" />  
+        <result column="say" property="say" jdbcType="VARCHAR" />  
+        <result column="create_time" property="create_time" jdbcType="DATE" />  
+        <result column="update_time" property="update_time" jdbcType="DATE" />  
+    </resultMap>  
+  
+    <sql id="Base_Column_List">  
+        u_id, accout_num, password, nick ,gender, birthday,likes,school,account_city,introduction,number,say,create_time,update_time
+    </sql>  
+  
+    <!-- 查询用户-->  
+    <select id="queryByPrimaryKey" resultMap="BaseResultMap"  
+        parameterType="java.lang.Integer">  
+        select  
+        <include refid="Base_Column_List" />  
+        from usercommon  
+        where u_id = #{u_id,jdbcType=INTEGER}  
+    </select>  
+    
+     <!-- 查询用户根据 用户名和密码登录-->  
+    <select id="queryByAccountAndPassword" resultMap="BaseResultMap"  >  
+        select  
+        <include refid="Base_Column_List" />  
+        from  usercommon  
+        where accout_num = #{0}  and   password = #{1} 
+    </select>  
+     
+    <!-- 插入用户 注册-->  
+    <insert id="insertUser" parameterType="com.chillax.dto.UserCommon">  
+        insert into usercommon    
+        <trim prefix="(" suffix=")" suffixOverrides="," >    
+          <if test="u_id != null" >    
+            u_id,    
+          </if>    
+          <if test="accout_num != null" >    
+            accout_num,    
+          </if>    
+          <if test="password != null" >    
+            password,    
+          </if>
+          	<if test="nick != null">
+          	nick
+          	</if>
+          	<if test="gender != null">gender</if>
+          	<if test="birthday != null">birthday</if>
+          	<if test="like != null">like</if>
+          	<if test="school != null">school</if>
+          	<if test="account_city != null">account_city</if>
+          	<if test="introduction != null">introduction</if>
+          	<if test="number != null" > number</if>
+          	<if test="say != null">say</if>
+          	<if test="create_time != null">create_time</if>
+          	<if test="update_time != null">update_time</if>    
+        </trim>    
+        <trim prefix="values (" suffix=")" suffixOverrides="," >    
+          <if test="u_id != null" >    
+            #{u_id,jdbcType=INTEGER},    
+          </if>    
+          <if test="accout_num != null" >    
+            #{accout_num,jdbcType=VARCHAR},    
+          </if>    
+          <if test="password != null" >    
+            #{password,jdbcType=VARCHAR},    
+          </if>    
+          <if test="nick != null">#{nick,jdbcType=VARCHAR },</if>
+          <if test="gender != null">#{gender,jdbcType=VARCHAR},</if>
+          <if test="birthday != null">#{birthda,jdbcType=VARCHAR},</if>
+          <if test="like != null">#{like,jdbcType=VARCHAR},</if>
+          <if test="school != null">#{school,jdbcType=VARCHAR},</if>
+          <if test="account_city != null">#{account_city,jdbcType=VARCHAR},</if>
+          <if test="introduction !=null">#{introduction,jdbcType=VARCHAR},</if>
+          <if test="number !=null">#{ number,jdbcType=VARCHAR},</if>
+          <if test="say !=null">#{say,jdbcType=VARCHAR},</if>
+          <if test="create_time !=null">#{create_time ,jdbcType=DATE},</if>
+          <if test="update_time !=null">#{update_time,jdbcType=DATE},</if>
+        </trim>     
+    </insert>  
+      
+    <!-- 更新用户 -->  
+    <update id="updateByPrimaryKey" parameterType="com.chillax.dto.UserCommon" >    
+        update userCommon    
+        <set >    
+          <if test="u_id != null" >    
+            #{u_id,jdbcType=INTEGER},    
+          </if>    
+          <if test="accout_num != null" >    
+            #{accout_num,jdbcType=VARCHAR},    
+          </if>    
+          <if test="password != null" >    
+            #{password,jdbcType=VARCHAR},    
+          </if>    
+          <if test="nick != null">#{nick,jdbcType=VARCHAR },</if>
+          <if test="gender != null">#{gender,jdbcType=VARCHAR},</if>
+          <if test="birthday != null">#{birthda,jdbcType=VARCHAR},</if>
+          <if test="like != null">#{like,jdbcType=VARCHAR},</if>
+          <if test="school != null">#{school,jdbcType=VARCHAR},</if>
+          <if test="account_city != null">#{account_city,jdbcType=VARCHAR},</if>
+          <if test="introduction !=null">#{introduction,jdbcType=VARCHAR},</if>
+          <if test="number !=null">#{ number,jdbcType=VARCHAR},</if>
+          <if test="say !=null">#{say,jdbcType=VARCHAR},</if>
+          <if test="create_time !=null">#{create_time ,jdbcType=DATE},</if>
+          <if test="update_time !=null">#{update_time,jdbcType=DATE},</if>
+        </set>    
+        where id = #{id,jdbcType=INTEGER}   
+    </update>  
+    
+</mapper>  

@@ -1,0 +1,78 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.chillax.dao.IRelationDao" >    
+    <resultMap id="BaseResultMap" type="com.chillax.dto.Relation">  
+        <result column="rl_id" property="rl_id" jdbcType="INTEGER" />  
+        <result column="recevice" property="recevice" jdbcType="INTEGER" />  
+        <result column="oprater_id" property="oprater_id" jdbcType="INTEGER" />  
+        <result column="rl_type" property="rl_type" jdbcType="VARCHAR" />   
+        <result column="create_time" property="create_time" jdbcType="DATE" />  
+        <result column="update_time" property="update_time" jdbcType="DATE" />  
+    </resultMap>  
+    
+ 	
+	
+    <sql id="Base_Column_List">  
+        rl_id, recevice, oprater_id, rl_type ,create_time,update_time
+    </sql>  
+  
+   <!-- 插入用户 注册-->  
+    <insert id="insertComment" parameterType="com.chillax.dto.Relation">  
+        insert into  relation    
+        <trim prefix="(" suffix=")" suffixOverrides="," >    
+          <if test="rl_id != null" >    
+            rl_id,    
+          </if>    
+          <if test="recevice != null" >    
+            recevice,    
+          </if>    
+          <if test="rl_type != null" >    
+            rl_type,    
+          </if>
+          	<if test="oprater_id != null">
+          	oprater_id
+          	</if>
+          	<if test="create_time != null">create_time</if>
+          	<if test="update_time != null">update_time</if>    
+        </trim>    
+        <trim prefix="values (" suffix=")" suffixOverrides="," >    
+          <if test="rl_id != null" >    
+            #{rl_id,jdbcType=INTEGER},    
+          </if>    
+          <if test="recevice != null" >    
+            #{recevice,jdbcType=INTEGER},    
+          </if>    
+          <if test="rl_type != null" >    
+            #{rl_type,jdbcType=VARCHAR},    
+          </if>    
+          <if test="oprater_id != null">#{oprater_id,jdbcType=INTEGER },</if>
+          <if test="create_time !=null">#{create_time ,jdbcType=DATE},</if>
+          <if test="update_time !=null">#{update_time,jdbcType=DATE},</if>
+        </trim>     
+    </insert>  
+     
+     
+        <!-- 删除用户 -->  
+   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">  
+        delete from relation  
+        where rl_id = #{rl_id,jdbcType=INTEGER}    
+    </delete>  
+    
+  <!-- 查询用户-->  
+    <select id="getUSerRelavtion" resultMap="BaseResultMap" 
+      parameterType="java.lang.Integer">  
+        select  
+        <include refid="Base_Column_List" />  
+        from comment  
+        where c_id = #{c_id,jdbcType=INTEGER} and rl_type = #{rl_type,jdbcType=VARCHAR}
+    </select>
+    
+    
+    <select id="getRelation" resultMap="BaseResultMap" >  
+        select  
+        <include refid="Base_Column_List" />  
+        from comment  
+        where c_id = #{recevice,jdbcType=INTEGER} and rl_type = #{rl_type,jdbcType=VARCHAR} 
+        and rl_type = #{oprater_id,jdbcType=INTEGER} 
+    </select>
+    
+</mapper>  

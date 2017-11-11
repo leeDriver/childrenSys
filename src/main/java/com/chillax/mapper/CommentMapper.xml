@@ -1,0 +1,62 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.chillax.dao.ICommentDao" >    
+    <resultMap id="BaseResultCommentMap" type="com.chillax.dto.Comment">  
+        <result column="c_id" property="c_id" jdbcType="INTEGER" />  
+        <result column="accountNum" property="accountNum" jdbcType="VARCHAR" />  
+        <result column="c_author_id" property="c_author_id" jdbcType="INTEGER" />  
+        <result column="content" property="content" jdbcType="VARCHAR" />   
+        <result column="create_time" property="create_time" jdbcType="DATE" />  
+        <result column="update_time" property="update_time" jdbcType="DATE" />  
+    </resultMap>  
+    
+ 
+	
+    <sql id="Base_Column_List">  
+        c_id, accountNum, c_author_id, content ,create_time,update_time
+    </sql>  
+  
+   <!-- 插入用户 注册-->  
+    <insert id="insertComment" parameterType="com.chillax.dto.Comment">  
+        insert into  comment    
+        <trim prefix="(" suffix=")" suffixOverrides="," >    
+          <if test="c_id != null" >    
+            c_id,    
+          </if>    
+          <if test="accountNum != null" >    
+            accountNum,    
+          </if>    
+          <if test="c_author_id != null" >    
+            c_author_id,    
+          </if>
+          	<if test="content != null">
+          	content
+          	</if>
+          	<if test="create_time != null">create_time</if>
+          	<if test="update_time != null">update_time</if>    
+        </trim>    
+        <trim prefix="values (" suffix=")" suffixOverrides="," >    
+          <if test="c_id != null" >    
+            #{c_id,jdbcType=INTEGER},    
+          </if>    
+          <if test="accountNum != null" >    
+            #{accountNum,jdbcType=VARCHAR},    
+          </if>    
+          <if test="content != null" >    
+            #{content,jdbcType=VARCHAR},    
+          </if>    
+          <if test="c_author_id != null">#{c_author_id,jdbcType=INTEGER },</if>
+          <if test="create_time !=null">#{create_time ,jdbcType=DATE},</if>
+          <if test="update_time !=null">#{update_time,jdbcType=DATE},</if>
+        </trim>     
+    </insert>  
+     
+  <!-- 查询用户-->  
+    <select id="getCurrentByUserComment" resultMap="BaseResultCommentMap" 
+      parameterType="java.lang.Integer">  
+        select  
+        <include refid="Base_Column_List" />  
+        from comment  
+        where c_id = #{c_id,jdbcType=INTEGER}
+    </select>
+    
+</mapper>  

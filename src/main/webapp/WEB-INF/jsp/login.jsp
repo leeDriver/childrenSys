@@ -24,6 +24,7 @@
 </head>
 <body>
 
+
 	<div class="jumbotron">
 		<form id="loginMethod" action="usercommon/loginMethod" method="post">
 			<h3>
@@ -33,15 +34,14 @@
 			<h3>
 				密码 <input id="password" name="password" />
 			</h3>
-			<a href="usercommon/forgetJsp">忘记密码</a> <br /> <input type="submit"
-				value="登录" />
-			
-				<a href="usercommon/regiestJsp">注册</a>
-
+			<a href="usercommon/forgetJsp">忘记密码</a> <br /> 
+			<input type="submit" value="登录" />
+			<input type="submit" value="注册" href="usercommon" />
 			
 		</form>
 
 	</div>
+
 
 </body>
 </html>

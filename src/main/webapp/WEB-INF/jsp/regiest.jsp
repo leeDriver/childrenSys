@@ -24,8 +24,10 @@
 </head>
 <body>
 
+
+
 	<div class="jumbotron">
-		<form id="loginMethod" action="usercommon/loginMethod" method="post">
+		<form id="loginMethod" action="regiestMethod" method="post">
 			<h3>
 				帐号 <input id="name" name="name" />
 			</h3>
@@ -33,15 +35,14 @@
 			<h3>
 				密码 <input id="password" name="password" />
 			</h3>
-			<a href="usercommon/forgetJsp">忘记密码</a> <br /> <input type="submit"
-				value="登录" />
-			
-				<a href="usercommon/regiestJsp">注册</a>
-
-			
+			<h3>
+				确认密码 <input id="password" name="passwordConfirm" />
+			</h3>
+			<input type="submit" value="注册" />
 		</form>
 
 	</div>
+
 
 </body>
 </html>

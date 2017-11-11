@@ -1,0 +1,114 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.chillax.dao.IResourceDao" >    
+    <resultMap id="BaseResultMapResource" type="com.chillax.dto.Resource">  
+        <result column="r_id" property="r_id" jdbcType="INTEGER" />  
+        <result column="author_id" property="author_id" jdbcType="INTEGER" />  
+        <result column="top" property="top" jdbcType="INTEGER" />  
+        <result column="title" property="title" jdbcType="VARCHAR" />  
+        <result column="content" property="content" jdbcType="VARCHAR" />  
+        <result column="images" property="images" jdbcType="VARCHAR" />  
+        <result column="r_type" property="r_type" jdbcType="VARCHAR" />  
+        <result column="create_time" property="create_time" jdbcType="DATE" />  
+        <result column="update_time" property="update_time" jdbcType="DATE" />  
+    </resultMap>  
+	  
+    <sql id="Base_Column_List">  
+        r_id, title, content, images ,author_id, r_type,top,create_time,update_time
+    </sql>  
+  
+    <!-- 查询用户-->  
+    <select id="getRecource" resultMap="BaseResultMapResource"  
+        parameterType="java.lang.Integer">  
+        select  
+        <include refid="Base_Column_List" />  
+        from resource  
+        where r_id = #{r_id,jdbcType=INTEGER}  
+    </select>  
+    
+    <!-- 查询用户-->  
+    <select id="getSelectByUser" resultMap="BaseResultMapResource"  
+        parameterType="java.lang.Integer">  
+        select  
+        <include refid="Base_Column_List" />  
+        from resource  
+        where r_id = #{r_id,jdbcType=INTEGER}  
+    </select>  
+    
+    
+    <select id="getHotList" resultMap="BaseResultMapResource"  >  
+        select  
+        <include refid="Base_Column_List" />  
+        from resource order by top des 
+    </select>  
+    
+        
+    <!-- 插入用户 注册-->  
+    <insert id="insertResouce" parameterType="com.chillax.dto.Resource">  
+        insert into resource    
+        <trim prefix="(" suffix=")" suffixOverrides="," >    
+          <if test="r_id != null" >    
+            r_id,    
+          </if>    
+          <if test="title != null" >    
+            title,    
+          </if>    
+          <if test="content != null" >    
+            content,    
+          </if>
+          	<if test="images != null">
+          	images
+          	</if>
+          	<if test="author_id != null">author_id</if>
+          	<if test="r_type != null">r_type</if>
+          	<if test="top != null">top</if>
+          	<if test="create_time != null">create_time</if>
+          	<if test="update_time != null">update_time</if>    
+        </trim>    
+        <trim prefix="values (" suffix=")" suffixOverrides="," >    
+          <if test="r_id != null" >    
+            #{r_id,jdbcType=INTEGER},    
+          </if>    
+          <if test="title != null" >    
+            #{title,jdbcType=VARCHAR},    
+          </if>    
+          <if test="content != null" >    
+            #{content,jdbcType=VARCHAR},    
+          </if>    
+          <if test="images != null">#{images,jdbcType=VARCHAR },</if>
+          <if test="author_id != null">#{author_id,jdbcType=INTEGER},</if>
+          <if test="r_type != null">#{r_type,jdbcType=VARCHAR},</if>
+          <if test="top != null">#{top,jdbcType=INTEGER},</if>
+          <if test="create_time !=null">#{create_time ,jdbcType=DATE},</if>
+          <if test="update_time !=null">#{update_time,jdbcType=DATE},</if>
+        </trim>     
+    </insert>  
+      
+    <!-- 更新用户 -->  
+    <update id="updateByPrimaryKey" parameterType="com.chillax.dto.UserCommon" >    
+        update user    
+        <set >    
+          <if test="u_id != null" >    
+            #{u_id,jdbcType=INTEGER},    
+          </if>    
+          <if test="accout_num != null" >    
+            #{accout_num,jdbcType=VARCHAR},    
+          </if>    
+          <if test="password != null" >    
+            #{password,jdbcType=VARCHAR},    
+          </if>    
+          <if test="nick != null">#{nick,jdbcType=VARCHAR },</if>
+          <if test="gender != null">#{gender,jdbcType=VARCHAR},</if>
+          <if test="birthday != null">#{birthda,jdbcType=VARCHAR},</if>
+          <if test="like != null">#{like,jdbcType=VARCHAR},</if>
+          <if test="school != null">#{school,jdbcType=VARCHAR},</if>
+          <if test="account_city != null">#{account_city,jdbcType=VARCHAR},</if>
+          <if test="introduction !=null">#{introduction,jdbcType=VARCHAR},</if>
+          <if test="number !=null">#{ number,jdbcType=VARCHAR},</if>
+          <if test="say !=null">#{say,jdbcType=VARCHAR},</if>
+          <if test="create_time !=null">#{create_time ,jdbcType=DATE},</if>
+          <if test="update_time !=null">#{update_time,jdbcType=DATE},</if>
+        </set>    
+        where id = #{id,jdbcType=INTEGER}   
+    </update>  
+    
+</mapper>  
