@@ -14,5 +14,7 @@ public interface IUserCommonService {
     public void registered(UserCommon userCommon);  
     
     public void updateUser(UserCommon userCommon);  
+    
+    public List<UserCommon> getHotUser();
 
 }  

@@ -16,7 +16,9 @@ public interface IUserCommonDao {
   public void insertUser(UserCommon user);  
   
   
-  public List<UserCommon> queryUserByBatch(Map<String,Object> params);  
+  public List<UserCommon> queryUserByBatch(Map<String,Object> params);
+  
+  public List<UserCommon> getAllUser();  
 
     
     

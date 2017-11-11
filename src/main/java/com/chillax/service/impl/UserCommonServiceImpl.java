@@ -41,5 +41,11 @@ public class UserCommonServiceImpl implements IUserCommonService {
 	
 		userDao.updateByPrimaryKey(userCommon);
 	}
+
+	@Override
+	public List<UserCommon> getHotUser() {
+		
+		return userDao.getAllUser();
+	}
      
 }  

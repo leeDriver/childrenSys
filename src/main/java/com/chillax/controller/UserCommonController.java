@@ -96,5 +96,14 @@ public class UserCommonController {
     }
     
     
+    @RequestMapping("/userList")  
+    public String userList(HttpServletRequest request,Model model){  
+        List<UserCommon> uList = userCommonService.getHotUser();  
+        model.addAttribute("uList", uList);  
+        return "userList";  
+    }  
+      
+    
+    
     
 }  

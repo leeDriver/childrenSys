@@ -25,9 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
   <body>  
     <c:forEach items="${uList }" var="u">  
-        用户名称：${u.name}  
-        用户年龄：${u.age }  
-        <br/>  
+        用户名称：${u.name}
+        用户年龄：${u.age }
+                <br/>  
     </c:forEach>  
     <!--bootstrap需要依赖jQuery，所以必须在他之前先引入jQuery-->
   <script src="<%=basePath %>resources/js/bootstrap/jquery-3.2.1.min.js"></script>
