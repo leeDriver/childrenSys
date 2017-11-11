@@ -33,7 +33,13 @@ public class UserCommonServiceImpl implements IUserCommonService {
 	@Override
 	public void registered(UserCommon userCommon) {
 		
-		userDao.insertUser(userCommon);;
-	}  
+		userDao.insertUser(userCommon);
+	}
+
+	@Override
+	public void updateUser(UserCommon userCommon) {
+	
+		userDao.updateByPrimaryKey(userCommon);
+	}
      
 }  

@@ -12,5 +12,7 @@ public interface IUserCommonService {
     public UserCommon login(String name,String pwd);  
     
     public void registered(UserCommon userCommon);  
+    
+    public void updateUser(UserCommon userCommon);  
 
 }  

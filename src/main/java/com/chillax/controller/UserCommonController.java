@@ -77,7 +77,23 @@ public class UserCommonController {
         user.setPassword(password);
         userCommonService.registered(user); 
         return "login";  
-    }  
+    }
+    
+    @RequestMapping("/updateMethod")  
+    public String updateUser(HttpServletRequest request,Model model){ 
+    	UserCommon user = (UserCommon) request.getSession().getAttribute("user");
+    	user.setNick(request.getParameter("name"));
+    	user.setGender(request.getParameter("sex"));
+    	user.setBirthday(request.getParameter("brith"));
+    	user.setAccount_city(request.getParameter("identents"));
+    	user.setNumber(request.getParameter("mobile"));
+    	user.setSay(request.getParameter("say"));
+    	user.setSchool(request.getParameter("school"));
+    	user.setLike(request.getParameter("like"));
+    	user.setIntroduction(request.getParameter("intro"));
+        userCommonService.updateUser(user); 
+        return "login";  
+    }
     
     
     

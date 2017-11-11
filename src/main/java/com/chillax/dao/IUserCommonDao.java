@@ -20,7 +20,7 @@ public interface IUserCommonDao {
 
     
     
-  public void updateByPrimaryKey(Integer id);  
+  public void updateByPrimaryKey(UserCommon user);  
 
   
     
